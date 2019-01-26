@@ -11,7 +11,16 @@ class Layout extends Component {
       <Aux>
         <NavBar>NavBar</NavBar>
         <Container>
-          <Search />
+          <Row>
+            <Col>
+              <Search />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div>Table here</div>
+            </Col>
+          </Row>
         </Container>
       </Aux>
     );
