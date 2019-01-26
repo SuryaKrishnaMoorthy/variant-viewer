@@ -1,64 +1,21 @@
-import React from "react";
-import {
-  Nav,
-  NavItem,
-  Dropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavLink
-} from "reactstrap";
+import React, { Component } from "react";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
-export default class Example extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
-
+class NavBar extends Component {
   render() {
     return (
       <div>
-        <Nav pills>
-          <NavItem>
-            <NavLink href="#" active>
-              Link
-            </NavLink>
-          </NavItem>
-          <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle nav caret>
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <DropdownItem disabled>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Another Action</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <NavItem>
-            <NavLink href="#">Link</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="#">Another Link</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink disabled href="#">
-              Disabled Link
-            </NavLink>
-          </NavItem>
-        </Nav>
+        <Navbar color="dark" dark expand="md">
+          <NavbarBrand href="/">Variant Viewer</NavbarBrand>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/Login/">Login</NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
       </div>
     );
   }
 }
+
+export default NavBar;
