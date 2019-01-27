@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import { CSVLink } from "react-csv";
+import { data, headers } from "../../data/data";
 
 class VariantTable extends Component {
   constructor() {
@@ -10,34 +12,30 @@ class VariantTable extends Component {
     };
   }
   render() {
-    const { data } = this.state;
+    // const { data } = this.state;
+    console.log(data);
+
     return (
       <div>
+        <CSVLink data={data}>Download me</CSVLink>
         <ReactTable
           data={data}
           filterable
           defaultFilterMethod={(filter, row) =>
             String(row[filter.id]) === filter.value
           }
-          //   SELECT chrom,start,end,ref,alt,gene,clinvar_pathogenic,clinvar_disease_name FROM variants WHERE clinvar_disease_name NOT NULL;
-          // header, login button, SQL query text box + submit button, table of results w/ filter functions
           columns={[
             {
               Header: "Query Result",
               columns: [
-                {
-                  Header: "Chrom",
-                  accessor: "firstName",
+                ...headers.map(header => ({
+                  Header: header,
+                  accessor: header,
                   filterMethod: (filter, row) =>
                     row[filter.id].startsWith(filter.value) &&
-                    row[filter.id].endsWith(filter.value)
-                },
-                { Header: "start" },
-                { Header: "end" },
-                { Header: "ref" },
-                { Header: "gene" },
-                { Header: "clinvar_pathogenic" },
-                { Header: "clinvar_disease_name" }
+                    row[filter.id].endsWith(filter.value),
+                  style: { cursor: "pointer" }
+                }))
               ]
             }
           ]}
