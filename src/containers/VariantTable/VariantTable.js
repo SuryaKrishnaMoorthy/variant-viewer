@@ -13,27 +13,43 @@ class VariantTable extends Component {
   }
   render() {
     // const { data } = this.state;
-    console.log(data);
 
     return (
       <div>
-        <CSVLink data={data}>Download me</CSVLink>
+        <CSVLink
+          data={data}
+          headers={headers}
+          filename={"query-results.csv"}
+          className="btn btn-primary"
+        >
+          Download
+        </CSVLink>
         <ReactTable
           data={data}
           filterable
-          defaultFilterMethod={(filter, row) =>
-            String(row[filter.id]) === filter.value
-          }
+          defaultFilterMethod={(filter, row) => {
+            return (
+              String(row[filter.id]) === filter.value ||
+              String(row[filter.id]).includes(filter.value)
+            );
+          }}
           columns={[
             {
               Header: "Query Result",
               columns: [
                 ...headers.map(header => ({
-                  Header: header,
+                  Header: () => (
+                    <span className="text-primary">
+                      <i className="fa-tasks" /> {header}
+                    </span>
+                  ),
                   accessor: header,
-                  filterMethod: (filter, row) =>
-                    row[filter.id].startsWith(filter.value) &&
-                    row[filter.id].endsWith(filter.value),
+                  filterMethod: (filter, row) => {
+                    return (
+                      row[filter.id].startsWith(filter.value) &&
+                      row[filter.id].endsWith(filter.value)
+                    );
+                  },
                   style: { cursor: "pointer" }
                 }))
               ]

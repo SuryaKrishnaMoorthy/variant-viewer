@@ -1,5 +1,3 @@
-//   SELECT chrom,start,end,ref,alt,gene,clinvar_pathogenic,clinvar_disease_name FROM variants WHERE clinvar_disease_name NOT NULL;
-// header, login button, SQL query text box + submit button, table of results w/ filter functions
 const headers = [
   "chrom",
   "start",
@@ -11,7 +9,9 @@ const headers = [
   "clinvar_disease_name"
 ];
 
+// Split each variant-record at "|" to get an array
 const unformattedData = [
+  "chrom|start|end|ref|alt|gene|clinvar_pathogenic|clinvar_disease_name",
   "chr1|25747229|25747230|G|C|RHCE|17709:Benign|RH_C/c_POLYMORPHISM",
   "chr1|53676447|53676448|G|A|CPT2|30118:risk_factor|Encephalopathy,_acute,_infection-induced,_4,_susceptibility_to",
   "chr1|161599692|161599693|T|C|FCGR3B|36924:Pathogenic|Neutrophil-specific_antigens_na1/na2",
@@ -30,10 +30,11 @@ const unformattedData = [
   "chr3|193355101|193355102|T|C|OPA1|5089:risk_factor|Glaucoma,_normal_tension,_susceptibility_to",
   "chr7|150695725|150695726|T|C|NOS3|496809:risk_factor|Metabolic_syndrome,_susceptibility_to",
   "chr7|150696110|150696111|T|G|NOS3|496809:risk_factor|Metabolic_syndrome,_susceptibility_to"
-].map(record => record.split("|"));
+]
+  .slice(1)
+  .map(record => record.split("|"));
 
 // convert array to an object
-
 const data = unformattedData.map(record => {
   return record.reduce((obj, val, index) => {
     obj[headers[index]] = val;
