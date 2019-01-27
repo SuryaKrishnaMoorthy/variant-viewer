@@ -41,7 +41,7 @@ class VariantTable extends Component {
               columns: [
                 ...headers.map(header => ({
                   Header: () => (
-                    <span className="text-primary">
+                    <span className="text-info bold">
                       <i className="fa-tasks" /> {header}
                     </span>
                   ),
