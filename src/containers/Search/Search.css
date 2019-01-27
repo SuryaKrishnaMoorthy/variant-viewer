@@ -1,0 +1,20 @@
+.Form {
+  margin-top: 20px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+}
+
+.ButtonDiv {
+  display: flex;
+  float: right;
+}
+.Button {
+  margin-left: 10px;
+  background: rgb(16, 14, 22);
+  height: 25px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+  font-size: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}

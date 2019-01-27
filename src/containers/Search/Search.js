@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
+import "./Search.css";
 class Search extends Component {
   state = {
     query: ""
@@ -26,7 +27,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.onSubmit} className="Form">
           <FormGroup>
             <Input
               placeholder="Enter the SQL Command"
@@ -37,30 +38,11 @@ class Search extends Component {
               onChange={this.onChange}
             />
           </FormGroup>
-          <div style={{ display: "flex" }}>
-            <Button
-              style={{
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                marginBottom: "20px",
-                width: "15%"
-              }}
-              onClick={this.clearText}
-            >
+          <div className="ButtonDiv">
+            <Button className="Button" onClick={this.clearText}>
               Clear
             </Button>
-            <Button
-              style={{
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                marginBottom: "20px",
-                width: "15%"
-              }}
-            >
-              Submit
-            </Button>
+            <Button className="Button">Submit</Button>
           </div>
         </Form>
       </div>

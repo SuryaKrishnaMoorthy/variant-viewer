@@ -1,0 +1,21 @@
+.DownloadButton {
+  background-color: rgb(16, 14, 22);
+  color: rgb(255, 255, 255);
+  height: 25px;
+  /* padding-top: 0; */
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 2rem;
+}
+
+.DownloadButton:hover {
+  background-color: rgb(16, 14, 22);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.Header {
+  background-color: rgb(16, 14, 22);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}

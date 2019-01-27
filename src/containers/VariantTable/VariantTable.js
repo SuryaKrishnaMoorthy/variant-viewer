@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+
+import "./VariantTable.css";
 import { CSVLink } from "react-csv";
 import { data, headers } from "../../data/data";
 
@@ -20,7 +22,7 @@ class VariantTable extends Component {
           data={data}
           headers={headers}
           filename={"query-results.csv"}
-          className="btn btn-primary"
+          className="btn DownloadButton"
         >
           Download
         </CSVLink>

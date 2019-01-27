@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 
+import "./Layout.css";
 import Aux from "../_Aux/_Aux";
 import NavBar from "../../containers/NavBar/NavBar";
 import Search from "../../containers/Search/Search";
@@ -10,14 +11,10 @@ class Layout extends Component {
   render() {
     return (
       <Aux>
-        <Row>
-          <Col>
-            <NavBar>NavBar</NavBar>
-          </Col>
-        </Row>
+        <NavBar>NavBar</NavBar>
         <Container>
           <Row>
-            <Col>
+            <Col className="Col">
               <Search />
             </Col>
           </Row>

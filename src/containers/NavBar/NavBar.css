@@ -1,0 +1,29 @@
+.NavBar {
+  background-color: rgb(16, 14, 22);
+  color: rgb(255, 255, 255);
+}
+
+.NavBrand {
+  margin-left: 2rem;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.NavBrand:hover {
+  color: rgb(255, 255, 255);
+}
+
+.NavLink {
+  color: rgb(255, 255, 255);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+  font-weight: 700;
+  margin-right: 2rem;
+}
+
+.NavLink:hover {
+  color: rgb(255, 255, 255);
+}
