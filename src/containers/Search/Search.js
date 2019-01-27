@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-import Aux from "../../hoc/_Aux/_Aux";
 
 class Search extends Component {
   state = {

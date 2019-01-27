@@ -10,7 +10,11 @@ class Layout extends Component {
   render() {
     return (
       <Aux>
-        <NavBar>NavBar</NavBar>
+        <Row>
+          <Col>
+            <NavBar>NavBar</NavBar>
+          </Col>
+        </Row>
         <Container>
           <Row>
             <Col>

@@ -6,7 +6,9 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">Variant Viewer</NavbarBrand>
+          <NavbarBrand ml-4 href="/">
+            Variant Viewer
+          </NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/Login/">Login</NavLink>
