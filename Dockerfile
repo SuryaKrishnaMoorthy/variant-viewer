@@ -20,4 +20,7 @@ COPY --from=react-build /app/build /usr/share/nginx/html/
 
 # COPY /build /usr/share/nginx/html
 EXPOSE 80
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+# CMD nginx -g daemon off;
+# CMD ['/usr/sbin/nginx', '-g', 'daemon off;']
+
+CMD ["nginx", "-g", "daemon off;"]
