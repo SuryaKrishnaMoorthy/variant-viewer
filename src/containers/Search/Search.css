@@ -6,12 +6,12 @@
 
 .ButtonDiv {
   display: flex;
-  float: right;
+  float: left;
 }
 .Button {
-  margin-left: 10px;
+  margin-right: 10px;
   background: rgb(16, 14, 22);
-  height: 25px;
+  /* height: 25px; */
   font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
     sans-serif;
   font-size: 1rem;

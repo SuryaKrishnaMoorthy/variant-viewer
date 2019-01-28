@@ -58,7 +58,7 @@ class VariantTable extends Component {
             }
           ]}
           defaultPageSize={10}
-          className="-striped -highlight"
+          className="-striped -highlight Table"
         />
       </div>
     );

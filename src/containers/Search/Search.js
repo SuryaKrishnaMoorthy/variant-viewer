@@ -4,23 +4,25 @@ import { Form, FormGroup, Input, Button } from "reactstrap";
 import "./Search.css";
 class Search extends Component {
   state = {
-    query: ""
+    query: "",
+    genoType: ""
   };
 
   onChange = e => {
     this.setState({
-      query: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.query);
+    console.log(this.state);
   };
 
   clearText = () => {
     this.setState({
-      query: ""
+      query: "",
+      genoType: ""
     });
   };
 
@@ -32,17 +34,27 @@ class Search extends Component {
             <Input
               placeholder="Enter the SQL Command"
               type="textarea"
-              name="queryText"
-              id="queryText"
+              name="query"
+              id="query"
               value={this.state.query}
               onChange={this.onChange}
             />
           </FormGroup>
+          <FormGroup>
+            <Input
+              placeholder="Genotype filters"
+              type="textarea"
+              name="genoType"
+              id="genoType"
+              value={this.state.genoType}
+              onChange={this.onChange}
+            />
+          </FormGroup>
           <div className="ButtonDiv">
+            <Button className="Button">Submit</Button>
             <Button className="Button" onClick={this.clearText}>
               Clear
             </Button>
-            <Button className="Button">Submit</Button>
           </div>
         </Form>
       </div>
