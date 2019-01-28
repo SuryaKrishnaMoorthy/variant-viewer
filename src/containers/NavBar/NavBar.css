@@ -1,12 +1,13 @@
 .NavBar {
-  background-color: rgb(16, 14, 22);
+  /* background-image: linear-gradient(rgb(22, 56, 110), rgb(21, 63, 131)); */
+  background-color: rgb(22, 56, 110);
   color: rgb(255, 255, 255);
 }
 
 .NavBrand {
   margin-left: 2rem;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
-    sans-serif;
+  /* font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif; */
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
   font-weight: bold;
@@ -18,8 +19,8 @@
 
 .NavLink {
   color: rgb(255, 255, 255);
-  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
-    sans-serif;
+  /* font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif; */
   font-weight: 700;
   margin-right: 2rem;
 }

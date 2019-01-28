@@ -1,5 +1,10 @@
 .DownloadButton {
-  background-color: rgb(16, 14, 22);
+  /* background-color: rgb(16, 14, 22); */
+  background-image: linear-gradient(
+    rgb(71, 113, 173),
+    rgb(112, 148, 205),
+    rgb(71, 113, 173)
+  );
   color: rgb(255, 255, 255);
   /* height: 25px; */
   /* padding: 0; */

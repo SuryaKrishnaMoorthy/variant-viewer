@@ -10,11 +10,22 @@
 }
 .Button {
   margin-right: 10px;
-  background: rgb(16, 14, 22);
+  background-image: linear-gradient(
+    rgb(71, 113, 173),
+    rgb(112, 148, 205),
+    rgb(71, 113, 173)
+  );
+  /* background: rgb(118, 120, 121); */
+  /* border-color: rgb(56, 57, 58); */
   /* height: 25px; */
   font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
     sans-serif;
   font-size: 1rem;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.Button:hover {
+  background: rgb(35, 100, 170);
+  border-color: rgb(35, 100, 170);
 }
