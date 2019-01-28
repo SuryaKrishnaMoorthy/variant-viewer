@@ -30,10 +30,7 @@ class VariantTable extends Component {
           data={data}
           filterable
           defaultFilterMethod={(filter, row) => {
-            return (
-              String(row[filter.id]) === filter.value ||
-              String(row[filter.id]).includes(filter.value)
-            );
+            return String(row[filter.id]) === filter.value;
           }}
           columns={[
             {
@@ -48,8 +45,11 @@ class VariantTable extends Component {
                   accessor: header,
                   filterMethod: (filter, row) => {
                     return (
-                      row[filter.id].startsWith(filter.value) &&
-                      row[filter.id].endsWith(filter.value)
+                      // row[filter.id].startsWith(filter.value) &&
+                      // row[filter.id].endsWith(filter.value) &&
+                      String(row[filter.id].toLowerCase()).includes(
+                        filter.value.toLowerCase()
+                      )
                     );
                   },
                   style: { cursor: "pointer" }
@@ -58,7 +58,7 @@ class VariantTable extends Component {
             }
           ]}
           defaultPageSize={10}
-          className="-striped -highlight Table"
+          className="-striped -highlight"
         />
       </div>
     );
