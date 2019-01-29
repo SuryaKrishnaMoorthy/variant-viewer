@@ -8,7 +8,9 @@ class VariantExporter extends Component {
   state = {
     query: "",
     genoType: "",
-    filter: {}
+    filter: {},
+    data: {},
+    headers: []
   };
 
   onChangeHandler = e => {
@@ -23,6 +25,9 @@ class VariantExporter extends Component {
       genoType: this.state.genoType
     });
     console.log("payload", JSON.stringify(payload));
+    this.setState({
+      ...payload
+    });
   };
 
   onSubmitHandler = e => {
@@ -76,7 +81,11 @@ class VariantExporter extends Component {
         </Row>
         <Row>
           <Col>
-            <VariantTable onFilterChange={this.onFilteredChangeHandler} />
+            <VariantTable
+              onFilterChange={this.onFilteredChangeHandler}
+              data={this.props.data}
+              headers={this.props.headers}
+            />
           </Col>
         </Row>
       </Container>

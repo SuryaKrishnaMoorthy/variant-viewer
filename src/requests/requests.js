@@ -1,14 +1,12 @@
 import axios from "axios";
-import { data, headers } from "../data/data";
+import { unFormattedData } from "../data/data";
+// import { data, headers } from "../data/data";
 
 const baseURL = "http://localhost:3000";
 
-const headersFromResponse = unFormattedData => {
-  return unFormattedData.slice(0, 1).split("|");
-};
-
 const formatResponse = unFormattedData => {
-  return unFormattedData
+  const headers = unFormattedData.slice(0, 1).split("|");
+  const data = unFormattedData
     .slice(1)
     .map(record => record.split("|"))
     .map(record => {
@@ -17,6 +15,7 @@ const formatResponse = unFormattedData => {
         return obj;
       }, {});
     });
+  return { data, headers };
 };
 
 const postQueryRequest = async ({ query, genoType }) => {
@@ -31,9 +30,8 @@ const postQueryRequest = async ({ query, genoType }) => {
         }
       }
     );
-    const headers = headersFromResponse(response.data);
-    const data = formatResponse(response.data);
-    return { headers, data };
+    const payload = formatResponse(response.data);
+    return { payload };
   } catch (error) {
     console.log(error);
   }
@@ -49,9 +47,8 @@ const filterRequest = async body => {
         authorization: `Bearer ${token}`
       }
     });
-    const headers = headersFromResponse(response.data);
-    const data = formatResponse(response.data);
-    return { headers, data };
+    const payload = formatResponse(response.data);
+    return { payload };
   } catch (error) {
     console.log(error);
   }
