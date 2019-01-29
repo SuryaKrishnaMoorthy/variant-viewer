@@ -7,12 +7,6 @@ import { CSVLink } from "react-csv";
 import { data, headers } from "../../data/data";
 
 class VariantTable extends Component {
-  constructor() {
-    super();
-    this.state = {
-      //   data: makeData()
-    };
-  }
   render() {
     // const { data } = this.state;
 
@@ -28,6 +22,9 @@ class VariantTable extends Component {
         </CSVLink>
         <ReactTable
           data={data}
+          onFilteredChange={(filtered, column) =>
+            this.props.onFilterChange(filtered)
+          }
           filterable
           defaultFilterMethod={(filter, row) => {
             return String(row[filter.id]) === filter.value;

@@ -2,42 +2,43 @@ import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 import "./Search.css";
+
 class Search extends Component {
   state = {
     query: "",
     genoType: ""
   };
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  // onChange = e => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
 
-  onSubmit = e => {
-    e.preventDefault();
-    console.log(this.state);
-  };
+  // onSubmit = e => {
+  //   e.preventDefault();
+  //   console.log(this.state);
+  // };
 
-  clearText = () => {
-    this.setState({
-      query: "",
-      genoType: ""
-    });
-  };
+  // clearText = () => {
+  //   this.setState({
+  //     query: "",
+  //     genoType: ""
+  //   });
+  // };
 
   render() {
     return (
       <div>
-        <Form onSubmit={this.onSubmit} className="Form">
+        <Form onSubmit={e => this.props.onSubmitHandler(e)} className="Form">
           <FormGroup>
             <Input
               placeholder="Enter the SQL Command"
               type="textarea"
               name="query"
               id="query"
-              value={this.state.query}
-              onChange={this.onChange}
+              value={this.props.query}
+              onChange={e => this.props.onChange(e)}
             />
           </FormGroup>
           <FormGroup>
@@ -46,8 +47,8 @@ class Search extends Component {
               type="textarea"
               name="genoType"
               id="genoType"
-              value={this.state.genoType}
-              onChange={this.onChange}
+              value={this.props.genoType}
+              onChange={e => this.props.onChange(e)}
             />
           </FormGroup>
           <div className="ButtonDiv">
