@@ -10,9 +10,14 @@ class VariantTable extends Component {
   constructor() {
     super();
     this.state = {
-      //   data: makeData()
+      filter: {}
     };
   }
+
+  // onFilterChangeHandler = (id, value) => {
+  //   this.setState
+  // }
+
   render() {
     // const { data } = this.state;
 
@@ -43,6 +48,7 @@ class VariantTable extends Component {
                     </span>
                   ),
                   accessor: header,
+                  onFilteredChange: (filtered, column) => {},
                   filterMethod: (filter, row) => {
                     return (
                       // row[filter.id].startsWith(filter.value) ||
