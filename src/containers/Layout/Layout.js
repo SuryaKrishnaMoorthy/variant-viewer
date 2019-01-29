@@ -11,7 +11,7 @@ class Layout extends Component {
   render() {
     return (
       <Aux>
-        <NavBar>NavBar</NavBar>
+        <NavBar />
         <Container>
           <Row>
             <Col className="Col">
