@@ -19,8 +19,8 @@ class VariantTable extends Component {
     return (
       <div>
         <CSVLink
-          data={data}
-          headers={headers}
+          data={data ? data : ""}
+          headers={headers ? headers : []}
           filename={"query-results.csv"}
           className="btn DownloadButton"
         >
@@ -38,27 +38,29 @@ class VariantTable extends Component {
           columns={[
             {
               Header: "Query Result",
-              columns: [
-                ...headers.map(header => ({
-                  Header: () => (
-                    <span className="text-info bold">
-                      <i className="fa-tasks" /> {header}
-                    </span>
-                  ),
-                  accessor: header,
-                  filterMethod: (filter, row) => {
-                    return (
-                      // row[filter.id].startsWith(filter.value) ||
-                      // (row[filter.id].endsWith(filter.value) &&
-                      // Changed to partial filter
-                      String(row[filter.id].toLowerCase()).includes(
-                        filter.value.toLowerCase()
-                      )
-                    );
-                  },
-                  style: { cursor: "pointer" }
-                }))
-              ]
+              columns: headers
+                ? [
+                    ...headers.map(header => ({
+                      Header: () => (
+                        <span className="text-info bold">
+                          <i className="fa-tasks" /> {header}
+                        </span>
+                      ),
+                      accessor: header,
+                      filterMethod: (filter, row) => {
+                        return (
+                          // row[filter.id].startsWith(filter.value) ||
+                          // (row[filter.id].endsWith(filter.value) &&
+                          // Changed to partial filter
+                          String(row[filter.id].toLowerCase()).includes(
+                            filter.value.toLowerCase()
+                          )
+                        );
+                      },
+                      style: { cursor: "pointer" }
+                    }))
+                  ]
+                : headers
             }
           ]}
           defaultPageSize={10}
