@@ -9,12 +9,7 @@ import { CSVLink } from "react-csv";
 
 class VariantTable extends Component {
   render() {
-    // if (this.props.data && this.props.headers) {
     const { data, headers } = this.props;
-    // } else {
-    //   const data = {};
-    //   const headers = [];
-    // }
 
     return (
       <div>

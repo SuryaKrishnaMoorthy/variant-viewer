@@ -83,8 +83,8 @@ class VariantExporter extends Component {
           <Col>
             <VariantTable
               onFilterChange={this.onFilteredChangeHandler}
-              data={this.props.data}
-              headers={this.props.headers}
+              data={this.state.data}
+              headers={this.state.headers}
             />
           </Col>
         </Row>

@@ -31,6 +31,7 @@ const postQueryRequest = async ({ query, genoType }) => {
       }
     );
     const payload = formatResponse(response.data);
+    console.log("payload", payload);
     return { payload };
   } catch (error) {
     console.log(error);
