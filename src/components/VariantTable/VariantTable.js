@@ -8,7 +8,12 @@ import { data, headers } from "../../data/data";
 
 class VariantTable extends Component {
   render() {
-    // const { data } = this.state;
+    if (this.props.data && this.props.headers) {
+      const { data, headers } = this.props;
+    } else {
+      const data = {};
+      const headers = [];
+    }
 
     return (
       <div>

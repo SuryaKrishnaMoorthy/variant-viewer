@@ -18,11 +18,16 @@ class VariantExporter extends Component {
   };
 
   onSubmitRequest = async () => {
-    await requests.postQueryRequest(this.state);
+    const payload = await requests.postQueryRequest({
+      query: this.state.query,
+      genoType: this.state.genoType
+    });
+    console.log("payload", JSON.stringify(payload));
   };
 
   onSubmitHandler = e => {
     e.preventDefault();
+    this.onSubmitRequest();
     console.log(this.state);
   };
 
