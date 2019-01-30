@@ -32,16 +32,16 @@ const unformattedData = [
   "chr7|150696110|150696111|T|G|NOS3|496809:risk_factor|Metabolic_syndrome,_susceptibility_to"
 ];
 
-// unformattedData.slice(1).map(record => record.split("|"));
+// convert array to an object
+const data = unformattedData
+  .slice(1)
+  .map(record => record.split("|"))
+  .map(record => {
+    return record.reduce((obj, val, index) => {
+      obj[headers[index]] = val;
+      return obj;
+    }, {});
+  });
 
-// // convert array to an object
-// const data = unformattedData.map(record => {
-//   return record.reduce((obj, val, index) => {
-//     obj[headers[index]] = val;
-//     return obj;
-//   }, {});
-// });
-
-// export { data, headers, unformattedData };
-
-export { unformattedData };
+export { data, headers, unformattedData };
+// export { unformattedData };

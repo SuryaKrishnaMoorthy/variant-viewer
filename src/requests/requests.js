@@ -1,11 +1,11 @@
 import axios from "axios";
-import { unFormattedData } from "../data/data";
+import { unformattedData } from "../data/data";
 // import { data, headers } from "../data/data";
 
-const baseURL = "http://localhost:3000";
+const baseURL = "http://localhost:3001";
 
 const formatResponse = unFormattedData => {
-  const headers = unFormattedData.slice(0, 1).split("|");
+  const headers = unFormattedData.slice(0, 1)[0].split("|");
   const data = unFormattedData
     .slice(1)
     .map(record => record.split("|"))
@@ -19,39 +19,51 @@ const formatResponse = unFormattedData => {
 };
 
 const postQueryRequest = async ({ query, genoType }) => {
+  const body = { query, genoType };
   try {
     const token = "testSubmit";
+    const response = await axios.post(`${baseURL}/`, body, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+    // const payload = formatResponse(response.data);
+
+    // Dummy Data
+    const payload = formatResponse(unformattedData);
+    return payload;
+  } catch (error) {
+    console.log(error);
+    // Dummy response - To be deleted when connected to backend
+    const payload = formatResponse(unformattedData);
+    return payload;
+  }
+};
+
+const filterRequest = async body => {
+  const { query, genoType, filter } = { ...body };
+  try {
+    const token = "testFilter";
     const response = await axios.post(
       `${baseURL}/`,
-      { query, genoType },
+      { query, genoType, filter },
       {
         headers: {
           authorization: `Bearer ${token}`
         }
       }
     );
-    const payload = formatResponse(response.data);
-    console.log("payload", payload);
-    return { payload };
+    // uncomment when connected to backend
+    // const payload = formatResponse(response.data);
+
+    // Dummy response - To be deleted when connected to backend
+    const payload = formatResponse(unformattedData);
+    return payload;
   } catch (error) {
     console.log(error);
-  }
-};
-
-const filterRequest = async body => {
-  console.log("body", JSON.stringify(body));
-
-  try {
-    const token = "testFilter";
-    const response = await axios.post(`${baseURL}/`, body, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    });
-    const payload = formatResponse(response.data);
-    return { payload };
-  } catch (error) {
-    console.log(error);
+    // Dummy response - To be deleted when connected to backend
+    const payload = formatResponse(unformattedData);
+    return payload;
   }
 };
 export default { postQueryRequest, filterRequest };

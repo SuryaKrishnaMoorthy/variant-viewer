@@ -14,8 +14,8 @@ class VariantTable extends Component {
     return (
       <div>
         <CSVLink
-          data={data ? data : ""}
-          headers={headers ? headers : []}
+          data={data}
+          headers={headers}
           filename={"query-results.csv"}
           className="btn DownloadButton"
         >
@@ -28,34 +28,33 @@ class VariantTable extends Component {
           }
           filterable
           defaultFilterMethod={(filter, row) => {
-            return String(row[filter.id]) === filter.value;
+            return true;
+            // String(row[filter.id]) === filter.value;
           }}
           columns={[
             {
               Header: "Query Result",
-              columns: headers
-                ? [
-                    ...headers.map(header => ({
-                      Header: () => (
-                        <span className="text-info bold">
-                          <i className="fa-tasks" /> {header}
-                        </span>
-                      ),
-                      accessor: header,
-                      filterMethod: (filter, row) => {
-                        return (
-                          // row[filter.id].startsWith(filter.value) ||
-                          // (row[filter.id].endsWith(filter.value) &&
-                          // Changed to partial filter
-                          String(row[filter.id].toLowerCase()).includes(
-                            filter.value.toLowerCase()
-                          )
-                        );
-                      },
-                      style: { cursor: "pointer" }
-                    }))
-                  ]
-                : headers
+              columns: [
+                ...headers.map(header => ({
+                  Header: () => (
+                    <span className="text-info bold">
+                      <i className="fa-tasks" /> {header}
+                    </span>
+                  ),
+                  accessor: header,
+                  // filterMethod: (filter, row) => {
+                  //   return (
+                  //     // row[filter.id].startsWith(filter.value) ||
+                  //     // (row[filter.id].endsWith(filter.value) &&
+                  //     // Changed to partial filter
+                  //     String(row[filter.id].toLowerCase()).includes(
+                  //       filter.value.toLowerCase()
+                  //     )
+                  //   );
+                  // },
+                  style: { cursor: "pointer" }
+                }))
+              ]
             }
           ]}
           defaultPageSize={10}

@@ -9,8 +9,8 @@ class VariantExporter extends Component {
     query: "",
     genoType: "",
     filter: {},
-    data: {},
-    headers: []
+    data: [],
+    headers: [""]
   };
 
   onChangeHandler = e => {
@@ -19,21 +19,19 @@ class VariantExporter extends Component {
     });
   };
 
-  onSubmitRequest = async () => {
+  onSubmitHandler = async e => {
+    e.preventDefault();
+    const { query, genoType } = this.state;
     const payload = await requests.postQueryRequest({
-      query: this.state.query,
-      genoType: this.state.genoType
+      query,
+      genoType
     });
+
     console.log("payload", JSON.stringify(payload));
+
     this.setState({
       ...payload
     });
-  };
-
-  onSubmitHandler = e => {
-    e.preventDefault();
-    this.onSubmitRequest();
-    console.log(this.state);
   };
 
   clearTextHandler = () => {
@@ -44,7 +42,10 @@ class VariantExporter extends Component {
   };
 
   onFilterChangeRequest = async () => {
-    await requests.filterRequest(this.state);
+    const payload = await requests.filterRequest(this.state);
+    this.setState({
+      ...payload
+    });
   };
 
   onFilteredChangeHandler = (filter, prevState) => {
@@ -56,16 +57,15 @@ class VariantExporter extends Component {
     this.setState({
       filter: filterObj
     });
+    this.onFilterChangeRequest();
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log("prevProps, prevState", prevProps.data, prevState);
-    this.onFilterChangeRequest();
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   // console.log("prevProps, prevState", prevProps.data, prevState);
+  //   this.onFilterChangeRequest();
+  // }
 
   render() {
-    console.log("render", this.state.filter);
-
     return (
       <Container>
         <Row>
