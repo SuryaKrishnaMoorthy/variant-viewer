@@ -1,15 +1,3 @@
-const headers = [
-  "chrom",
-  "start",
-  "end",
-  "ref",
-  "alt",
-  "gene",
-  "clinvar_pathogenic",
-  "clinvar_disease_name"
-];
-
-// Split each variant-record at "|" to get an array
 const unformattedData = [
   "chrom|start|end|ref|alt|gene|clinvar_pathogenic|clinvar_disease_name",
   "chr1|25747229|25747230|G|C|RHCE|17709:Benign|RH_C/c_POLYMORPHISM",
@@ -32,16 +20,29 @@ const unformattedData = [
   "chr7|150696110|150696111|T|G|NOS3|496809:risk_factor|Metabolic_syndrome,_susceptibility_to"
 ];
 
+// Split each variant-record at "|" to get an array
 // convert array to an object
-const data = unformattedData
-  .slice(1)
-  .map(record => record.split("|"))
-  .map(record => {
-    return record.reduce((obj, val, index) => {
-      obj[headers[index]] = val;
-      return obj;
-    }, {});
-  });
+// const headers = [
+//   "chrom",
+//   "start",
+//   "end",
+//   "ref",
+//   "alt",
+//   "gene",
+//   "clinvar_pathogenic",
+//   "clinvar_disease_name"
+// ];
 
-export { data, headers, unformattedData };
-// export { unformattedData };
+// const data = unformattedData
+//   .slice(1)
+//   .map(record => record.split("|"))
+//   .map(record => {
+//     return record.reduce((obj, val, index) => {
+//       obj[headers[index]] = val;
+//       return obj;
+//     }, {});
+//   });
+
+// export { data, headers, unformattedData };
+
+export { unformattedData };

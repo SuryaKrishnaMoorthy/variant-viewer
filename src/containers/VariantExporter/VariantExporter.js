@@ -19,6 +19,7 @@ class VariantExporter extends Component {
     });
   };
 
+  // On sqlcmd submission
   onSubmitHandler = async e => {
     e.preventDefault();
     const { query, genoType } = this.state;
@@ -27,13 +28,12 @@ class VariantExporter extends Component {
       genoType
     });
 
-    console.log("payload", JSON.stringify(payload));
-
     this.setState({
       ...payload
     });
   };
 
+  // clear sql cmd and genotype text input
   clearTextHandler = () => {
     this.setState({
       query: "",
@@ -41,6 +41,7 @@ class VariantExporter extends Component {
     });
   };
 
+  // request for filtered response
   onFilterChangeRequest = async () => {
     const payload = await requests.filterRequest(this.state);
     this.setState({
@@ -48,6 +49,7 @@ class VariantExporter extends Component {
     });
   };
 
+  // set state with filtered key and value
   onFilteredChangeHandler = (filter, prevState) => {
     const filterObj = filter.reduce((acc, filObj) => {
       acc[filObj.id] = filObj.value;

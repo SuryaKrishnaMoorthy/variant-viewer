@@ -1,9 +1,9 @@
 import axios from "axios";
 import { unformattedData } from "../data/data";
-// import { data, headers } from "../data/data";
 
 const baseURL = "http://localhost:3001";
 
+//Format the "|" response
 const formatResponse = unFormattedData => {
   const headers = unFormattedData.slice(0, 1)[0].split("|");
   const data = unFormattedData
@@ -27,14 +27,16 @@ const postQueryRequest = async ({ query, genoType }) => {
         authorization: `Bearer ${token}`
       }
     });
+
+    // To uncomment when connected to backend:
     // const payload = formatResponse(response.data);
 
-    // Dummy Data
+    // Dummy response - To be deleted when connected to backend:
     const payload = formatResponse(unformattedData);
     return payload;
   } catch (error) {
     console.log(error);
-    // Dummy response - To be deleted when connected to backend
+    // Dummy response - To be deleted when connected to backend:
     const payload = formatResponse(unformattedData);
     return payload;
   }
@@ -53,15 +55,15 @@ const filterRequest = async body => {
         }
       }
     );
-    // uncomment when connected to backend
+    // To uncomment when connected to backend:
     // const payload = formatResponse(response.data);
 
-    // Dummy response - To be deleted when connected to backend
+    // Dummy response - To be deleted when connected to backend:
     const payload = formatResponse(unformattedData);
     return payload;
   } catch (error) {
     console.log(error);
-    // Dummy response - To be deleted when connected to backend
+    // Dummy response - To be deleted when connected to backend:
     const payload = formatResponse(unformattedData);
     return payload;
   }
